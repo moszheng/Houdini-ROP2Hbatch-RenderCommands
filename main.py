@@ -14,15 +14,15 @@ def generate_render_commands():
             path = node.path()
             range = int(node.parm("trange").eval())
 
-            start = str(int(hou.frame()))
-            end = str(int(hou.frame()))
+            start_frame = str(int(hou.frame()))
+            end_frame = str(int(hou.frame()))
 
             if(range != 0):
-                start = str(int(node.parm("f1").eval()))
-                end = str(int(node.parm("f2").eval()))
+                start_frame = str(int(node.parm("f1").eval()))
+                end_frame = str(int(node.parm("f2").eval()))
 
-            t1 = "mread " + hou.getenv("HIPFILE")
-            t2 = "render -V -f " + start + " " + end + " " + str(path)
+            t1 = f"mread {hou.getenv("HIPFILE")}"
+            t2 = f"render -V -f {start_frame} {end_frame} {str(path)}"
             
             newtext = t1 + '\n\n' + t2 + '\n\n'
             print(newtext)
