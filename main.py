@@ -21,7 +21,7 @@ def generate_render_commands():
                 start_frame = str(int(node.parm("f1").eval()))
                 end_frame = str(int(node.parm("f2").eval()))
 
-            t1 = f"mread {hou.getenv("HIPFILE")}"
+            t1 = f'mread {hou.getenv("HIPFILE")}'
             t2 = f"render -V -f {start_frame} {end_frame} {str(path)}"
             
             newtext = t1 + '\n\n' + t2 + '\n\n'
